@@ -15,4 +15,8 @@ data class User(
     val dob: String,
     val street: String,
     val registrationDate: String
-)
+){
+    companion object{
+        const val BASE_URL = "https://randomuser.me/"
+    }
+}
