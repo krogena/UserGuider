@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.glide)
+
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
 

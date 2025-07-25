@@ -8,8 +8,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.iyshcherbakov.userguider.data.UserRepositoryImpl
 import ru.iyshcherbakov.userguider.data.UserService
 import ru.iyshcherbakov.userguider.domain.User.Companion.BASE_URL
+import ru.iyshcherbakov.userguider.domain.UserListRepository
 import javax.inject.Singleton
 import kotlin.jvm.java
 
@@ -24,6 +26,13 @@ object AppModule {
     @Provides
     fun baseUrl() = BASE_URL
 
+    @Provides
+    @Singleton
+    fun provideUserRepository(
+        service: UserService
+    ): UserListRepository {
+        return UserRepositoryImpl(service)
+    }
 
     // Создает и настраивает HTTP-логгер для отладки сетевых запросов.
     // Устанавливает уровень логирования BODY для вывода тел запросов и ответов.

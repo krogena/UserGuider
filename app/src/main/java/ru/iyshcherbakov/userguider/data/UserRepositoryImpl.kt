@@ -46,17 +46,17 @@ class UserRepositoryImpl @Inject constructor(
 // Расширение для маппинга
 private fun ApiUser.toDomainUser(): User {
     return User(
-        id = this.id,
-        name = "${this.name.first} ${this.name.last}",
-        email = this.email,
-        phone = this.phone,
-        picture = this.picture.medium,
-        location = "${this.location.city}, ${this.location.country}",
-        fullPicture = this.picture.large,
-        gender = "", // добавь поле в ApiUser если нужно
-        dob = "",
-        street = "${this.location.street.name}, ${this.location.street.number}",
-        registrationDate = ""
+        id = this.login?.uuid ?: "", // Добавьте проверку на null
+        name = "${this.name?.first ?: ""} ${this.name?.last ?: ""}".trim(),
+        email = this.email ?: "",
+        phone = this.phone ?: "",
+        picture = this.picture?.medium ?: "",
+        location = "${this.location?.city ?: ""}, ${this.location?.country ?: ""}",
+        fullPicture = this.picture?.large ?: "",
+        gender = this.gender ?: "",
+        dob = this.dob?.date ?: "",
+        street = "${this.location?.street?.name ?: ""}, ${this.location?.street?.number ?: 0}",
+        registrationDate = this.registered?.date ?: ""
     )
 }
 

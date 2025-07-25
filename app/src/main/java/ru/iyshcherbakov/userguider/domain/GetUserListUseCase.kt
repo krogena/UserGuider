@@ -1,7 +1,9 @@
 package ru.iyshcherbakov.userguider.domain
 
-class GetUserListUseCase (private val repository: UserListRepository){
-    suspend fun getUserList(): List<User>{
+import javax.inject.Inject
+
+class GetUserListUseCase @Inject constructor (private val repository: UserListRepository){
+    suspend operator fun invoke(): List<User>{
         return repository.getUsers()
     }
 }

@@ -1,13 +1,20 @@
 package ru.iyshcherbakov.userguider.data.dto
 
 data class ApiUser(
-    val id: String,
-    val name: ApiName,
-    val email: String,
-    val phone: String,
-    val picture: ApiPicture,
-    val location: ApiLocation
+    val login: ApiLogin?,
+    val name: ApiName?,
+    val email: String?,
+    val phone: String?,
+    val picture: ApiPicture?,
+    val location: ApiLocation?,
+    val gender: String?,
+    val dob: ApiDob?,
+    val registered: ApiRegistered?
 )
+
+data class ApiLogin(val uuid: String)
+data class ApiDob(val date: String)
+data class ApiRegistered(val date: String)
 
 data class ApiName(
     val first: String,
